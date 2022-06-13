@@ -1,0 +1,95 @@
+package learn.crypticRadio.controllers;
+
+
+import learn.crypticRadio.models.*;
+import learn.crypticRadio.domain.*;
+
+import org.apache.coyote.Response;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.List;
+
+@RestController
+@RequestMapping("/message")
+public class MessageController {
+
+    private final MessageService messageService;
+
+    public MessageController(MessageService messageService) {
+        this.messageService = messageService;
+    }
+
+    @GetMapping
+    public List<Message> findAll() {
+        return messageService.findAll();
+    }
+
+    @GetMapping("/find/{username}/{messageContent}")
+    public ResponseEntity<Message> findByUsernameAndMessage(@PathVariable String username,
+                                                            @PathVariable String messageContent) {
+
+        Message message = messageService.findByUsernameAndMessage(username, messageContent);
+
+        if(message == null) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+
+        else return new ResponseEntity<>(message, HttpStatus.OK);
+    }
+
+    @GetMapping("/{messageId}")
+    public ResponseEntity<Message> findById(@PathVariable int messageId) {
+        Message message = messageService.findById(messageId);
+        if (message == null) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(message, HttpStatus.OK);
+    }
+
+    @GetMapping("/room/{roomId}")
+    public List<Message> findByRoomId(@PathVariable int roomId) {
+        return messageService.findByRoomId(roomId);
+    }
+
+    @PostMapping
+    public ResponseEntity<Message> add(@RequestBody Message message) {
+        // add the timestamp
+        message.setTimeStamp(Timestamp.valueOf(LocalDateTime.now()));
+
+        Result<Message> messageResult = messageService.add(message);
+        if (!messageResult.isSuccess()) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+
+        return new ResponseEntity<>(messageResult.getPayload(), HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{messageId}")
+    public ResponseEntity<Message> update(@RequestBody Message message, @PathVariable int messageId) {
+        if (message.getMessageId() != messageId) {
+            return new ResponseEntity<>(null, HttpStatus.CONFLICT);
+        }
+
+        Result<Message> messageResult = messageService.update(message);
+        if (!messageResult.isSuccess()) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+
+        return new ResponseEntity<>(messageResult.getPayload(), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{messageId}")
+    public ResponseEntity<Void> deleteById(@PathVariable int messageId) {
+        if (!messageService.deleteById(messageId)) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        messageService.deleteById(messageId);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+}
