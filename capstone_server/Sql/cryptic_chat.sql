@@ -17,7 +17,8 @@ DROP TABLE IF EXISTS `cryptic_chat`.`user` ;
 CREATE TABLE IF NOT EXISTS `cryptic_chat`.`user` (
   user_id int primary key auto_increment,
   username VARCHAR(250) NOT NULL,
-  user_password VARCHAR(250) NOT NULL
+  user_password VARCHAR(250) NOT NULL,
+  `disabled` TINYINT NOT NULL
  )
 ENGINE = InnoDB;
 
@@ -175,3 +176,6 @@ begin
     
 end //
 delimiter ;
+
+select * from message;
+
