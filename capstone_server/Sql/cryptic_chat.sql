@@ -161,10 +161,10 @@ begin
     insert into role_has_user(role_id, user_id) values(2, 3);
     insert into role_has_user(role_id, user_id) values(2, 4);
     
-    insert into room(room_id, `name`) values(1, "Main");
-    insert into room(room_id, `name`) values(2, "test room 2");
-    insert into room(room_id, `name`) values(3, "test room 3");
-    insert into room(room_id, `name`) values(4, "test room 4");
+    insert into room(room_id, room_name) values(1, "Main");
+    insert into room(room_id, room_name) values(2, "test room 2");
+    insert into room(room_id, room_name) values(3, "test room 3");
+    insert into room(room_id, room_name) values(4, "test room 4");
     
     insert into room_has_user(room_id, user_id) values(1, 1);
 	insert into room_has_user(room_id, user_id) values(2, 1);
