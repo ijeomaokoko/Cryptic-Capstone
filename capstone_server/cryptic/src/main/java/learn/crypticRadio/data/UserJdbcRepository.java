@@ -28,7 +28,7 @@ public class UserJdbcRepository implements UserRepository{
         List<String> roles = getRolesByUsername(username);
 
         final String sql = "select user_id, username, password_hash, disabled " +
-                "from `cryptic_chat`.`user`"+
+                "from `cryptic_chat`.`user`" +
                 "where username = ?";
         AppUser appUser = jdbcTemplate.query(sql, new AppUserMapper(roles), username).stream()
                 .findFirst().orElse(null);
