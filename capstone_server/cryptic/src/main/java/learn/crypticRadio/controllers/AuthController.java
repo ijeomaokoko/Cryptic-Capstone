@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@RequestMapping("/api")
 public class AuthController {
 
     private final AuthenticationManager authenticationManager;
@@ -58,7 +59,7 @@ public class AuthController {
 
     @PostMapping("/create_account")
     public ResponseEntity<?> createAccount(@RequestBody Map<String, String> credentials) {
-        AppUser appUser = null;
+        AppUser appUser;
 
         try {
             String username = credentials.get("username");

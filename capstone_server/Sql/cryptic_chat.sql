@@ -17,8 +17,8 @@ DROP TABLE IF EXISTS `cryptic_chat`.`user` ;
 CREATE TABLE IF NOT EXISTS `cryptic_chat`.`user` (
   user_id int primary key auto_increment,
   username VARCHAR(250) NOT NULL,
-  user_password VARCHAR(250) NOT NULL,
-  `disabled` TINYINT NOT NULL
+  password_hash VARCHAR(250) NOT NULL,
+  disabled bit not null default(0)
  )
 ENGINE = InnoDB;
 
@@ -151,15 +151,14 @@ begin
     insert into role(`name`) values("USER");
     insert into role(`name`) values("ADMIN");
     
-    insert into user(user_id, username, user_password, disabled) values(1, "Jonathon", "$2a$10$yxFMZBgKlAMaOR7qwIFMmuvvmi.w0EgEV0AnTgV/mdVzJi.TEofOG", 0);
-    insert into user(user_id, username, user_password, disabled) values(2, "Joseph", "$2a$10$yxFMZBgKlAMaOR7qwIFMmuvvmi.w0EgEV0AnTgV/mdVzJi.TEofOG", 0);
-    insert into user(user_id, username, user_password, disabled) values(3, "Ijeoma", "$2a$10$yxFMZBgKlAMaOR7qwIFMmuvvmi.w0EgEV0AnTgV/mdVzJi.TEofOG", 0);
-    insert into user(user_id, username, user_password, disabled) values(4, "Instructor", "$2a$10$yxFMZBgKlAMaOR7qwIFMmuvvmi.w0EgEV0AnTgV/mdVzJi.TEofOG", 0);
+    -- passwords are set to "P@ssw0rd!"
+    insert into `user` (username, password_hash, disabled)
+    values
+    ('john@smith.com', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0),
+    ('sally@jones.com', '$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa', 0);
 
     insert into role_has_user(role_id, user_id) values(2, 1);
     insert into role_has_user(role_id, user_id) values(2, 2);
-    insert into role_has_user(role_id, user_id) values(2, 3);
-    insert into role_has_user(role_id, user_id) values(2, 4);
     
     insert into room(room_id, room_name) values(1, "Main");
     insert into room(room_id, room_name) values(2, "test room 2");
@@ -168,14 +167,13 @@ begin
     
     insert into room_has_user(room_id, user_id) values(1, 1);
 	insert into room_has_user(room_id, user_id) values(2, 1);
-	insert into room_has_user(room_id, user_id) values(3, 1);
     
-    insert into message(message, `timestamp`, room_id, user_id, username) values("test", "2022-05-03 12:12:12", 1, 1, "Jonathon");
-    insert into message(message, `timestamp`, room_id, user_id, username) values("test2", "2022-05-03 11:12:12", 1, 1, "Joseph");
-    insert into message(message, `timestamp`, room_id, user_id, username) values("test3", "2022-05-03 10:12:12", 1, 1, "Ijeoma");
+    insert into message(message, `timestamp`, room_id, user_id, username) values("test", "2022-05-03 12:12:12", 1, 1, "john@smith.com");
+    insert into message(message, `timestamp`, room_id, user_id, username) values("test2", "2022-05-03 11:12:12", 1, 1, "john@smith.com");
+    insert into message(message, `timestamp`, room_id, user_id, username) values("test3", "2022-05-03 10:12:12", 1, 1, "john@smith.com");
     
 end //
 delimiter ;
 
-select * from message;
+use cryptic_chat;
 
