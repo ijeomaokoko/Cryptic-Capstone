@@ -1,0 +1,10 @@
+version: '3'
+services:
+  api:
+    image: joseph13d/cryptic-api
+    ports:
+      - 80:8080
+    environment:
+      - DB_URL=jdbc:mysql://cryptic-dbi.cy0o6abdqnpz.us-east-1.rds.amazonaws.com:3306/cryptic_chat
+      - DB_USERNAME=roooot
+      - DB_PASSWORD=cE5043Zv2JH4JBkc4wnw
