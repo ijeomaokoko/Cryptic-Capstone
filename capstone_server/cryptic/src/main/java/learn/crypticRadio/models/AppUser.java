@@ -15,7 +15,7 @@ public class AppUser extends User {
 
     private int appUserId;
     private String username;
-    private String userPassword;
+    private String passwordHash;
     private boolean isDisabled;
     private List<Message> messages;
 
@@ -64,13 +64,13 @@ public class AppUser extends User {
         AppUser appUser = (AppUser) o;
         return getAppUserId() == appUser.getAppUserId() && isDisabled == appUser.isDisabled
                 && getUsername().equals(appUser.getUsername())
-                && userPassword.equals(appUser.userPassword)
+                && passwordHash.equals(appUser.passwordHash)
                 && roles.equals(appUser.roles);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getAppUserId(), getUsername(), userPassword, isDisabled, roles);
+        return Objects.hash(super.hashCode(), getAppUserId(), getUsername(), passwordHash, isDisabled, roles);
     }
 
     public List<Message> getMessages() {
@@ -81,8 +81,8 @@ public class AppUser extends User {
         this.messages = messages;
     }
 
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
+    public void setUserPassword(String passwordHash) {
+        this.passwordHash = passwordHash;
     }
 }
 
