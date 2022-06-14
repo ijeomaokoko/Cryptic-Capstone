@@ -3,6 +3,7 @@
 @awsurl=http://cryptic-api.us-east-1.elasticbeanstalk.com
 @jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJoZXJvZXMtYXBpIiwic3ViIjoiYWRtaW4iLCJhdXRob3JpdGllcyI6IkFETUlOIiwiZXhwIjoxNjUyOTgwMjM3fQ.TNuZHbZyi3_bchHsSQeIbtK9Ph4j9EfrSVrx04n2USM
 
+@localurl=http://localhost:8080
 GET {{url}} HTTP/1.1
 
 ### 
@@ -64,7 +65,17 @@ Accept: application/json
 
 ###
 
-POST {{awsurl}}/create_account HTTP/1.1
+POST {{localurl}}/authenticate HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+    "username": "Joseph",
+    "password": "ehCX7MexUCb&T7"
+}
+###
+
+POST {{localurl}}/create_account HTTP/1.1
 Content-Type: application/json
 Accept: application/json
 
