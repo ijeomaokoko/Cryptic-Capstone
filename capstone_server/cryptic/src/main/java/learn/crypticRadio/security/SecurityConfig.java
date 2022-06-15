@@ -46,6 +46,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/room").permitAll()
                 .antMatchers(HttpMethod.GET, "/room", "/room/*")
                 .hasAnyRole("USER", "ADMIN")
+                .antMatchers(HttpMethod.GET, "/room/user", "/room/user/*")
+                .hasAnyRole("USER", "ADMIN")
                 .antMatchers(HttpMethod.POST, "/room", "/room/*")
                 .hasAnyRole("USER", "ADMIN")
                 .antMatchers(HttpMethod.PUT, "/room", "/room/*")

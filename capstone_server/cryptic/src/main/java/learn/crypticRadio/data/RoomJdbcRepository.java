@@ -27,7 +27,7 @@ public class RoomJdbcRepository implements RoomRepository {
      */
     @Override
     public List<Room> findByUserId(int appUserId) {
-        final String sql = "select r.room_id, r.`name` from room r " +
+        final String sql = "select r.room_id, r.room_name from room r " +
                 "inner join room_has_user rhu on rhu.room_id = r.room_id " +
                 "where rhu.user_id = ?;";
         return jdbcTemplate.query(sql, new RoomMapper(), appUserId);

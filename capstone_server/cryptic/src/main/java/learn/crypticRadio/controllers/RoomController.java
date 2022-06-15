@@ -18,7 +18,7 @@ public class RoomController {
         this.roomService = roomService;
     }
 
-    @GetMapping("/{AppUserId}")
+    @GetMapping("/user/{AppUserId}")
     public ResponseEntity<List<Room>> findByUserId(@PathVariable int AppUserId) {
         List<Room> list = roomService.findByUserId(AppUserId);
         if (list.size() == 0) {
