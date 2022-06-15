@@ -28,14 +28,26 @@ public class UserJdbcRepository implements UserRepository{
         List<String> roles = getRolesByUsername(username);
 
         final String sql = "select user_id, username, password_hash, disabled " +
-                "from `cryptic_chat`.`user`" +
+                "from user " +
                 "where username = ?";
-        AppUser appUser = jdbcTemplate.query(sql, new AppUserMapper(roles), username).stream()
+
+        return jdbcTemplate.query(sql, new AppUserMapper(roles), username)
+                .stream()
                 .findFirst().orElse(null);
-        if(appUser != null){
-            //TODO RoomUser list here
-        }
-        return appUser;
+    }
+
+    @Override
+    public AppUser findByUserId(int userId) {
+
+        List<String> roles = getRolesByUserId(userId);
+
+        final String sql = "select user_id, username, password_hash, disabled " +
+                "from user " +
+                "where user_id = ?";
+
+        return jdbcTemplate.query(sql, new AppUserMapper(roles), userId)
+                .stream()
+                .findFirst().orElse(null);
     }
 
     @Override
@@ -104,5 +116,14 @@ public class UserJdbcRepository implements UserRepository{
                 + "inner join user u on u.user_id = ur.user_id "
                 + "where u.username = ?;";
         return jdbcTemplate.query(sql, (rs, rowId) -> rs.getString("name"), username);
+    }
+
+    private List<String> getRolesByUserId(int userId) {
+        final String sql = "select r.name "
+                + "from role_has_user ur "
+                + "inner join role r on ur.role_id = r.role_id "
+                + "inner join user u on u.user_id = ur.user_id "
+                + "where u.user_id = ?;";
+        return jdbcTemplate.query(sql, (rs, rowId) -> rs.getString("name"), userId);
     }
 }

@@ -29,11 +29,24 @@ public class AppUserService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        AppUser appUser = repository.findByUsername(username);
+    public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
+        AppUser appUser = repository.findByUsername(userId);
 
         if (appUser == null || !appUser.isEnabled()) {
-            throw new UsernameNotFoundException(username + " not found");
+            throw new UsernameNotFoundException(userId + " not found");
+        }
+
+        // add messages to user
+        appUser.setMessages(messageRepository.findByUserId(appUser.getAppUserId()));
+
+        return appUser;
+    }
+
+    public UserDetails loadUserByUserId(int userId) throws UsernameNotFoundException {
+        AppUser appUser = repository.findByUserId(userId);
+
+        if (appUser == null || !appUser.isEnabled()) {
+            throw new UsernameNotFoundException(userId + " not found");
         }
 
         // add messages to user

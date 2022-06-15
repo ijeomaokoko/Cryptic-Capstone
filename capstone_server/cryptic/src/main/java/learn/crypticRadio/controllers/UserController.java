@@ -14,15 +14,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/user")
 public class UserController {
 
-    private AppUserService appUserService;
+    private final AppUserService appUserService;
 
     public UserController(AppUserService appUserService) {
         this.appUserService = appUserService;
     }
 
-    @GetMapping("/{username}")
-    public ResponseEntity<Role> findByUsername(@PathVariable String username) {
-        AppUser appUser = (AppUser) appUserService.loadUserByUsername(username);
+    @GetMapping("/{appUserId}")
+    public ResponseEntity<Role> findByUserId(@PathVariable int appUserId) {
+
+        AppUser appUser = (AppUser) appUserService.loadUserByUserId(appUserId);
         if(appUser == null) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
