@@ -1,4 +1,4 @@
-@jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjcnlwdGljIiwic3ViIjoiam9obkBzbWl0aC5jb20iLCJhdXRob3JpdGllcyI6IlJPTEVfQURNSU4iLCJleHAiOjE2NTUzMTMzMDV9.xc33sTVS1b3GzwYbIF7cUR1ucfho0pzacJNI24XOU8M
+@jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjcnlwdGljIiwic3ViIjoiam9obkBzbWl0aC5jb20iLCJhdXRob3JpdGllcyI6IlJPTEVfQURNSU4iLCJleHAiOjE2NTUzMjE5NTN9.FCfnDvMZofrmjBUtmZw3Z9j4BhNkdfuc1-gpTN4jtnc
 @awsurl=http://cryptic-api.us-east-1.elasticbeanstalk.com
 @localurl=http://localhost:8080
 
@@ -58,30 +58,29 @@ Authorization: Bearer {{jwt}}
 
 ###
 
-PUT {{awsurl}}/message/4 HTTP/1.1
+PUT {{awsurl}}/message/5 HTTP/1.1
 Content-Type: application/json
 Accept: application/json
 Authorization: Bearer {{jwt}} 
 
 {
-    "messageId": 4,
+    "messageId": 5,
     "userId": 1,
     "username": "john@smith.com",
     "roomId": 1,
-    "messageContent": "http test 1",
+    "messageContent": "http test 5",
     "timeStamp": "2022-06-15T15:59:14.887+00:00"
 }
 
 ###
-POST {{localurl}}/api/create_account HTTP/1.1
-Content-Type: application/json
-Accept: application/json
 
-{
-    "username": "user2",
-    "password": "pass2"
-}
+DELETE {{awsurl}}/message/5 HTTP/1.1
+Authorization: Bearer {{jwt}} 
 
+### room requests
+
+GET {{awsurl}}/room/1
+Authorization: Bearer {{jwt}}
 
 ###below comments are just for reference
 
