@@ -12,7 +12,7 @@ public class RoomMapper implements RowMapper<Room> {
 
         return new Room(
                 resultSet.getInt("room_id"),
-                resultSet.getString("name")
+                resultSet.getString("room_name")
         );
     }
 }
