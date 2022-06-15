@@ -30,7 +30,7 @@ class UserJdbcRepositoryTest {
         assertEquals("john@smith.com",john.getUsername());
         assertEquals("$2a$10$ntB7CsRKQzuLoKY3rfoAQen5nNyiC/U60wBsWnnYrtQQi8Z3IZzQa",
                 john.getPassword());
-        
+
     }
 
     @Test

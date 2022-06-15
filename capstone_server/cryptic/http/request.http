@@ -1,6 +1,35 @@
-@jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJoZXJvZXMtYXBpIiwic3ViIjoiYWRtaW4iLCJhdXRob3JpdGllcyI6IkFETUlOIiwiZXhwIjoxNjUyOTgwMjM3fQ.TNuZHbZyi3_bchHsSQeIbtK9Ph4j9EfrSVrx04n2USM
+@jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjcnlwdGljIiwic3ViIjoiam9obkBzbWl0aC5jb20iLCJhdXRob3JpdGllcyI6IlJPTEVfQURNSU4iLCJleHAiOjE2NTUyNTE5ODR9.35GH7NxSz9jopKiLsZkflpLIuC5kp1Lzne16SPD6Y9M
 @awsurl=http://cryptic-api.us-east-1.elasticbeanstalk.com
 @localurl=http://localhost:8080
+
+###
+
+GET {{awsurl}}/message HTTP/1.1
+Authorization: Bearer {{jwt}}
+
+###
+
+POST {{awsurl}}/api/authenticate HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+    "username": "john@smith.com",
+    "password": "P@ssw0rd!"
+}
+###
+
+POST {{awsurl}}/api/create_account HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+    "username": "user2",
+    "password": "pass2"
+}
+
+
+
 
 POST {{localurl}}/api/authenticate HTTP/1.1
 Content-Type: application/json
