@@ -79,10 +79,16 @@ Authorization: Bearer {{jwt}}
 
 ### room requests
 
-GET {{url}}/room/1
+GET {{url}}/room/1 HTTP/1.1
 Authorization: Bearer {{jwt}}
 
 ###
 
-GET {{url}}/room/user/1
+GET {{url}}/room/user/1 HTTP/1.1
 Authorization: Bearer {{jwt}}
+
+### user requests
+
+GET {{url}}/user/john@smith.com HTTP/1.1
+
+###
