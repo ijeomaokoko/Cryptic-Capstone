@@ -3,7 +3,9 @@ package learn.crypticRadio.data;
 import learn.crypticRadio.models.AppUser;
 public interface UserRepository {
 
-    AppUser findByUserId(String userId);
+    AppUser findByUsername(String username);
+
+    AppUser findByUserId(int userId);
 
     AppUser add(AppUser appUser);
 

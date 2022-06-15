@@ -1,4 +1,4 @@
-@jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjcnlwdGljIiwic3ViIjoiam9obkBzbWl0aC5jb20iLCJhdXRob3JpdGllcyI6IlJPTEVfQURNSU4iLCJleHAiOjE2NTUzMjQyNzd9.v9c9vxIvzzQiMwmqq4GwpfUjQiJfdVdH-7YS4E6dMbs
+@jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjcnlwdGljIiwic3ViIjoiam9obkBzbWl0aC5jb20iLCJhdXRob3JpdGllcyI6IlJPTEVfQURNSU4iLCJleHAiOjE2NTUzMzM0NDB9.AxBYcn2iHnJs5LLkp5Sjzeb9A0kM6DZu9HGrZZh4Pj4
 @url=http://localhost:8080
 
 
@@ -33,7 +33,7 @@ Authorization: Bearer {{jwt}}
 
 ###
 
-GET {{url}}/message/1 HTTP/1.1
+GET {{url}}/message/6 HTTP/1.1
 Authorization: Bearer {{jwt}}
 
 ###
@@ -58,13 +58,13 @@ Authorization: Bearer {{jwt}}
 
 ###
 
-PUT {{url}}/message/5 HTTP/1.1
+PUT {{url}}/message/6 HTTP/1.1
 Content-Type: application/json
 Accept: application/json
 Authorization: Bearer {{jwt}} 
 
 {
-    "messageId": 5,
+    "messageId": 6,
     "userId": 1,
     "username": "john@smith.com",
     "roomId": 1,
@@ -74,7 +74,7 @@ Authorization: Bearer {{jwt}}
 
 ###
 
-DELETE {{url}}/message/5 HTTP/1.1
+DELETE {{url}}/message/8 HTTP/1.1
 Authorization: Bearer {{jwt}} 
 
 ### room requests
@@ -89,6 +89,7 @@ Authorization: Bearer {{jwt}}
 
 ### user requests
 
-GET {{url}}/user/john@smith.com HTTP/1.1
+GET {{url}}/user/1 HTTP/1.1
+Authorization: Bearer {{jwt}}
 
 ###
