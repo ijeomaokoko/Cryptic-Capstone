@@ -23,19 +23,17 @@ public class UserJdbcRepository implements UserRepository{
     }
 
     @Override
-    public AppUser findByUsername(String username) {
+    public AppUser findByUserId(String userId) {
 
-        List<String> roles = getRolesByUsername(username);
+        List<String> roles = getRolesByUsername(userId);
 
         final String sql = "select user_id, username, password_hash, disabled " +
-                "from `cryptic_chat`.`user`" +
+                "from user " +
                 "where username = ?";
-        AppUser appUser = jdbcTemplate.query(sql, new AppUserMapper(roles), username).stream()
+
+        return jdbcTemplate.query(sql, new AppUserMapper(roles), userId)
+                .stream()
                 .findFirst().orElse(null);
-        if(appUser != null){
-            //TODO RoomUser list here
-        }
-        return appUser;
     }
 
     @Override

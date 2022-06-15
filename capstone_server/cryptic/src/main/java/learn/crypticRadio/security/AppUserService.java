@@ -29,11 +29,11 @@ public class AppUserService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        AppUser appUser = repository.findByUsername(username);
+    public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
+        AppUser appUser = repository.findByUserId(userId);
 
         if (appUser == null || !appUser.isEnabled()) {
-            throw new UsernameNotFoundException(username + " not found");
+            throw new UsernameNotFoundException(userId + " not found");
         }
 
         // add messages to user
@@ -62,7 +62,7 @@ public class AppUserService implements UserDetailsService {
             throw new ValidationException("username must be less than 50 characters");
         }
 
-        if(repository.findByUsername(username) != null) {
+        if(repository.findByUserId(username) != null) {
             throw new DuplicateKeyException("username must be unique");
         }
     }

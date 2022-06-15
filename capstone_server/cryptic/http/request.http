@@ -1,4 +1,4 @@
-@jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjcnlwdGljIiwic3ViIjoiam9obkBzbWl0aC5jb20iLCJhdXRob3JpdGllcyI6IlJPTEVfQURNSU4iLCJleHAiOjE2NTUzMjI4NzZ9.NOtPAOHSqqyA55xy4E8w3oPk-mwuNOQWXxwlK7s8cFk
+@jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjcnlwdGljIiwic3ViIjoiam9obkBzbWl0aC5jb20iLCJhdXRob3JpdGllcyI6IlJPTEVfQURNSU4iLCJleHAiOjE2NTUzMjc0OTZ9.2i0CTTShemESSgR8EzlZao8ivlDie1TeNQvdWwuylr4
 @awsurl=http://cryptic-api.us-east-1.elasticbeanstalk.com
 @localurl=http://localhost:8080
 
@@ -79,8 +79,12 @@ Authorization: Bearer {{jwt}}
 
 ### room requests
 
-GET {{awsurl}}/room/john@smith.com
+GET {{awsurl}}/room/1
 Authorization: Bearer {{jwt}}
+
+### User requests
+
+GET {{url}}/user/john@smith.com HTTP/1.1
 
 ###below comments are just for reference
 
