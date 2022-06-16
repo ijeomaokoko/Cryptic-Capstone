@@ -1,0 +1,8 @@
+version: '3'
+services:
+  heroes-ui:
+    image: joseph13d/cryptic-ui
+    ports:
+      - 80:80
+    environment:
+      - API_URL=http://cryptic-api.us-east-1.elasticbeanstalk.com
