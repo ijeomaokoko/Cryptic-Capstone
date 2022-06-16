@@ -7,17 +7,21 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
+@SpringBootTest
 
 
 public class MessageJdbcTest {
 
 
-    public final static int NEXT_ID = 3;
+    public final static int NEXT_ID = 4;
 
     @Autowired
     MessageJdbcRepository repository;
@@ -34,7 +38,7 @@ public class MessageJdbcTest {
     void shouldFindAll() {
         List<Message> message = repository.findAll();
         assertNotNull(message);
-        assertTrue(message.size() >= 1 && message.size() <= 3);
+        assertTrue(message.size() >= 1 && message.size() <= 4);
     }
 
 
@@ -71,8 +75,12 @@ public class MessageJdbcTest {
 
    private Message makeMessage(){
         Message message = new Message();
-        message.setMessageId(1);
+        //message.setMessageId(1);
         message.setMessageContent("TEST");
+        message.setTimeStamp(Timestamp.valueOf("2022-06-16 11:12:12"));
+        message.setUsername("john@smith.com");
+        message.setRoomId(1);
+        message.setUserId(1);
         return message;
    }
 
