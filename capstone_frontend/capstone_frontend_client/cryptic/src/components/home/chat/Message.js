@@ -30,7 +30,7 @@ const Message = ({ message }) => {
   }
 
   const findMessageUsernameAndContent = () => {
-    fetch(`${window.API_URL}/message/find/${message.username}/${message.messageContent}`, {
+    fetch(`http://cryptic-api.us-east-1.elasticbeanstalk.com/api/authenticate/message/find/${message.username}/${message.messageContent}`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`
       }
@@ -46,7 +46,7 @@ const Message = ({ message }) => {
   }
 
   const deleteMessageRequest = (messageId) => {
-    fetch(`${window.API_URL}/message/${messageId}`, {
+    fetch(`http://cryptic-api.us-east-1.elasticbeanstalk.com/api/authenticate/message/${messageId}`, {
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`

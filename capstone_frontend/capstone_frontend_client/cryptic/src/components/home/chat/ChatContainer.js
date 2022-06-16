@@ -86,7 +86,7 @@ const ChatContainer = ({ currentRoom, getUserDetails }) => {
     setMessage('');
 
     // store the message
-    fetch(`${window.API_URL}/message`, {
+    fetch(`http://cryptic-api.us-east-1.elasticbeanstalk.com/api/authenticate/message`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
