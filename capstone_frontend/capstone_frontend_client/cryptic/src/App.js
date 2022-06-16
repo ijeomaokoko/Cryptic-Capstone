@@ -7,6 +7,7 @@ import Home from './components/home/Home';
 import NotFound from './components/utility/NotFound';
 import Login from './components/login/Login';
 import About from './components/about/About';
+import Calendar from './components/calendar/CalendarMonth';
 
 function App() {
 
@@ -23,9 +24,10 @@ function App() {
           <Router>
             <Routes>
               <Route path="*" element={<NotFound />} />
-              <Route path='/home' element={<Home />} />
-              <Route path ='/auth' element={<Login />} />
+              <Route path = '/home' element={<Home />} />
+              <Route path = '/auth' element={<Login />} />
               <Route path = '/about' element={<About />}/>
+              <Route path = '/calendar' element={<Calendar />}/>
             </Routes>
           </Router>
         </UserContext.Provider>

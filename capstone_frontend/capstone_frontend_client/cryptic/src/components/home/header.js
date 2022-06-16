@@ -46,6 +46,11 @@ const Header = () => {
     handleClose();
   }
 
+  const handleCalendar = () => {
+    navigate('/calendar');
+    handleClose();
+  }
+
   const handleGame = () => {
     navigate('/game');
     handleClose();
@@ -129,6 +134,7 @@ const Header = () => {
               <MenuItem onClick={handleLogOut}>Logout</MenuItem>
               <MenuItem onClick={handleAbout}>About</MenuItem>
               <MenuItem onClick={handleHome}>Home</MenuItem>
+              <MenuItem onClick={handleCalendar}>Calendar</MenuItem>
               <MenuItem onClick={handleGame}>Game</MenuItem>
             </Menu>
           </div>
