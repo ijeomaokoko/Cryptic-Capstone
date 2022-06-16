@@ -1,4 +1,4 @@
-@jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjcnlwdGljIiwic3ViIjoiam9obkBzbWl0aC5jb20iLCJhdXRob3JpdGllcyI6IlJPTEVfQURNSU4iLCJleHAiOjE2NTUzMzM0NDB9.AxBYcn2iHnJs5LLkp5Sjzeb9A0kM6DZu9HGrZZh4Pj4
+@jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjcnlwdGljIiwic3ViIjoiam9obkBzbWl0aC5jb20iLCJhdXRob3JpdGllcyI6IlJPTEVfQURNSU4iLCJleHAiOjE2NTU0MjA2NTh9.HLLX3cJLLV9WKNTbc6bH5EFEHO9753tDKqk_QqvoUDc
 @url=http://localhost:8080
 
 
@@ -89,7 +89,7 @@ Authorization: Bearer {{jwt}}
 
 ### user requests
 
-GET {{url}}/user/1 HTTP/1.1
+GET {{url}}/user/john@smith.com HTTP/1.1
 Authorization: Bearer {{jwt}}
 
 ###
