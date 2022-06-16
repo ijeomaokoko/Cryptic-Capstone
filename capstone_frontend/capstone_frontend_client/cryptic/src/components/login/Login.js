@@ -77,6 +77,7 @@ const Login = () => {
 
   const getUserDetails = () => {
     fetch(`http://cryptic-api.us-east-1.elasticbeanstalk.com/user/${user.username}`, {
+      method: 'GET',
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`
       }
@@ -122,6 +123,10 @@ const Login = () => {
       }
     }).then((data) => {
       if(data.userId) {
+        setUser({
+          username: user.username,
+          userId: data.appUserId
+        });
         handleSignIn(e);
         if(errors !== '') {
           setErrors('Oops. Something went wrong.');

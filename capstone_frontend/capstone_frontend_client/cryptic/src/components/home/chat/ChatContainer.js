@@ -20,7 +20,7 @@ const ChatContainer = ({ currentRoom, getUserDetails }) => {
     setSocket(s);
     getUserDetails(jwtDecode(localStorage.getItem("token")).sub);
 
-    fetch(`${window.API_URL}/message/room/${currentRoom.roomId}`, {
+    fetch(`http://cryptic-api.us-east-1.elasticbeanstalk.com/message/room/${currentRoom.roomId}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`
@@ -74,7 +74,6 @@ const ChatContainer = ({ currentRoom, getUserDetails }) => {
     socket.emit('chat message', { username: user.username, messageContent: message });
 
     const messageToPost = {
-      messageId: 0,
       messageContent: message,
       roomId: currentRoom.roomId,
       userId: user.userId,
@@ -86,7 +85,7 @@ const ChatContainer = ({ currentRoom, getUserDetails }) => {
     setMessage('');
 
     // store the message
-    fetch(`http://cryptic-api.us-east-1.elasticbeanstalk.com/api/authenticate/message`, {
+    fetch(`http://cryptic-api.us-east-1.elasticbeanstalk.com/message`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -95,6 +94,7 @@ const ChatContainer = ({ currentRoom, getUserDetails }) => {
       body: JSON.stringify(messageToPost)
     }).then((res) => {
       if (res.status !== 201) {
+        console.log(messageToPost);
         // alert message here that the message didn't send
         return null;
       }
