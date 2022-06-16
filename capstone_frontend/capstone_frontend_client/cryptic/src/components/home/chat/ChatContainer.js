@@ -16,7 +16,7 @@ const ChatContainer = ({ currentRoom, getUserDetails }) => {
 
   useEffect(() => {
 
-    let s = io(`${window.SOCKET_URL}`, { auth: { token: localStorage.getItem('token') } });
+    let s = io(`http://crypticsocketio.us-east-1.elasticbeanstalk.com:3003`, { auth: { token: localStorage.getItem('token') } });
     setSocket(s);
     getUserDetails(jwtDecode(localStorage.getItem("token")).sub);
 
