@@ -1,4 +1,4 @@
-@jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjcnlwdGljIiwic3ViIjoiam9obkBzbWl0aC5jb20iLCJhdXRob3JpdGllcyI6IlJPTEVfQURNSU4iLCJleHAiOjE2NTUzMzQxMDF9.2nwL6p3RVCKO52DpS9RNmvH1CkcYQfwKS9yvgHBjiWc
+@jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjcnlwdGljIiwic3ViIjoiQmlnQmVhcjg4IiwiYXV0aG9yaXRpZXMiOiJST0xFX1VTRVIiLCJleHAiOjE2NTU0MjE3NTZ9.fN8pUM-Rs1BH2t3yvqfv_pssSq46AwU5n8j1v9KO4Kg
 @awsurl=http://cryptic-api.us-east-1.elasticbeanstalk.com
 
 POST {{awsurl}}/api/authenticate HTTP/1.1
@@ -6,8 +6,8 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "username": "john@smith.com",
-    "password": "P@ssw0rd!"
+    "username": "BigBear88",
+    "password": "Holodeck88"
 }
 
 ###
@@ -17,8 +17,8 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "username": "user69",
-    "password": "420"
+    "username": "user66",
+    "password": "400"
 }
 
 
@@ -86,7 +86,7 @@ Authorization: Bearer {{jwt}}
 
 ### user requests
 
-GET {{awsurl}}/user/1 HTTP/1.1
+GET {{awsurl}}/user/BigBear88 HTTP/1.1
 Authorization: Bearer {{jwt}}
 
 ###
