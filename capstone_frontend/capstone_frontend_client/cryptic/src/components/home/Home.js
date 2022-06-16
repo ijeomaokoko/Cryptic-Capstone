@@ -30,7 +30,7 @@ const Home = () => {
   }, []);
 
   const getUserDetails = (username) => {
-    fetch(`${window.API_URL}/user/${username}`, {
+    fetch(`http://cryptic-api.us-east-1.elasticbeanstalk.com/user/${username}`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`
       }

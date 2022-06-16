@@ -46,7 +46,7 @@ const Login = () => {
     e.preventDefault();
     
     // call auth
-    fetch(`${window.API_URL}/api/authenticate`, {
+    fetch(`http://cryptic-api.us-east-1.elasticbeanstalk.com/api/authenticate`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -76,7 +76,7 @@ const Login = () => {
   }
 
   const getUserDetails = () => {
-    fetch(`${window.API_URL}/user/${user.username}`, {
+    fetch(`http://cryptic-api.us-east-1.elasticbeanstalk.com/user/${user.username}`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`
       }
@@ -105,7 +105,7 @@ const Login = () => {
       return;
     }
     
-    fetch(`${window.API_URL}/api/create_account`, {
+    fetch(`http://cryptic-api.us-east-1.elasticbeanstalk.com/api/create_account`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
