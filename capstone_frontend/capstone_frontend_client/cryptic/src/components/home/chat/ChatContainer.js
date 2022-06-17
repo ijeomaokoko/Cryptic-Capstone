@@ -71,13 +71,13 @@ const ChatContainer = ({ currentRoom, getUserDetails }) => {
 
 
     // emit broadcast
-    socket.emit('chat message', { username: user.username, messageContent: message });
+    socket.emit('chat message', { username: user.username, messageContent: message});
 
     const messageToPost = {
       messageContent: message,
       roomId: currentRoom.roomId,
       userId: user.userId,
-      username: user.username
+      username: user.username,
     }
 
     newMessages.push(messageToPost);

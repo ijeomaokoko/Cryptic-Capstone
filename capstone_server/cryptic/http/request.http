@@ -90,3 +90,5 @@ GET {{awsurl}}/user/BigBear88 HTTP/1.1
 Authorization: Bearer {{jwt}}
 
 ###
+
+POST {{awsurl}}/user/room/2 HTTP/1.1

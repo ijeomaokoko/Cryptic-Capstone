@@ -8,6 +8,7 @@ import NotFound from './components/utility/NotFound';
 import Login from './components/login/Login';
 import About from './components/about/About';
 import Calendar from './components/calendar/CalendarMonth';
+import Game from './components/game/Game';
 
 function App() {
 
@@ -28,6 +29,9 @@ function App() {
               <Route path = '/auth' element={<Login />} />
               <Route path = '/about' element={<About />}/>
               <Route path = '/calendar' element={<Calendar />}/>
+              <Route path = '/game' element={<Game />}/>
+
+
             </Routes>
           </Router>
         </UserContext.Provider>

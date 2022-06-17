@@ -26,8 +26,9 @@ public class RoomService {
     }
 
     public Result<Room> add(Room room) {
-        Result<Room> result = validate(room);
+        Result<Room> result = validateAdd(room);
         if (!result.isSuccess()) {
+            System.out.println("InvalidInitial");
             return result;
         }
         room = roomRepository.add(room);
@@ -65,6 +66,19 @@ public class RoomService {
         if (room.getRoomId() < 1) {
             result.addMessage("Room id invalid", ResultType.INVALID);
         }
+        return result;
+    }
+
+    private Result<Room> validateAdd(Room room) {
+        Result<Room> result = new Result<>();
+        if (room.getRoomName() == (null)) {
+            result.addMessage("Room name cannot be null", ResultType.INVALID);
+            return result;
+        }
+        if (room.getRoomName().equals("")) {
+            result.addMessage("Room name cannot be empty", ResultType.INVALID);
+        }
+
         return result;
     }
 }

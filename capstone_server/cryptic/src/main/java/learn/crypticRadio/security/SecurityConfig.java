@@ -51,11 +51,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/room/user", "/room/user/*")
                 .hasAnyRole("USER", "ADMIN")
                 .antMatchers(HttpMethod.POST, "/room", "/room/*")
-                .hasAnyRole("USER", "ADMIN")
+                .hasAnyRole("ADMIN")
                 .antMatchers(HttpMethod.PUT, "/room", "/room/*")
-                .hasAnyRole("USER", "ADMIN")
+                .hasAnyRole( "ADMIN")
                 .antMatchers(HttpMethod.DELETE, "/room", "/room/*")
-                .hasAnyRole("USER", "ADMIN")
+                .hasAnyRole("ADMIN")
                 .antMatchers(HttpMethod.GET,
                         "/cryptics", "/api/chat/*").permitAll()
                 .antMatchers(HttpMethod.POST,

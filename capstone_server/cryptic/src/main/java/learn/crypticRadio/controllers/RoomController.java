@@ -40,6 +40,7 @@ public class RoomController {
     public ResponseEntity<Room> add(@RequestBody Room room) {
         Result<Room> roomResult = roomService.add(room);
         if (!roomResult.isSuccess()) {
+            System.out.println("Failed here");
             return new ResponseEntity<>(roomResult.getPayload(), HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(roomResult.getPayload(), HttpStatus.OK);

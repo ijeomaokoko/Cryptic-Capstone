@@ -54,7 +54,7 @@ public class RoomJdbcRepository implements RoomRepository {
      */
     @Override
     public Room add(Room room) {
-        final String sql = "insert into room (`name`) values (?)";
+        final String sql = "insert into room (`room_name`) values (?)";
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -78,7 +78,7 @@ public class RoomJdbcRepository implements RoomRepository {
     @Override
     public boolean update(Room room) {
         final String sql = "update room set "
-                + "`name` = ? "
+                + "`room_name` = ? "
                 + "where room_id = ?;";
         return jdbcTemplate.update(sql,
                 room.getRoomName(), room.getRoomId()) > 0;
