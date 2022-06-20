@@ -1,4 +1,4 @@
-@jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjcnlwdGljIiwic3ViIjoiQmlnQmVhcjg4IiwiYXV0aG9yaXRpZXMiOiJST0xFX1VTRVIiLCJleHAiOjE2NTU0MjQ2NzJ9.nIMMpdtsYwbqhYDKBIRHDwKmxvR3MdPUWHZYDKKfvng
+@jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjcnlwdGljIiwic3ViIjoiQmlnQmVhcjg4IiwiYXV0aG9yaXRpZXMiOiJST0xFX1VTRVIiLCJleHAiOjE2NTU0OTMwMzh9.8kkwRCx8M9G5SZH9TYZ3nebMF-4OJC-UVQjsP7cICoM
 @awsurl=http://cryptic-api.us-east-1.elasticbeanstalk.com
 
 POST {{awsurl}}/api/authenticate HTTP/1.1
