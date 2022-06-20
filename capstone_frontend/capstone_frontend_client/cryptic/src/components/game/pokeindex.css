@@ -173,7 +173,7 @@ h3 {
   font-family: "Satisfy", cursive;
 }
 
-button:hover {
+pokebutton:hover {
   background-color: #ff0000;
   background-image: linear-gradient(315deg, #ff0000 0%, #ffed00 74%);
 }
