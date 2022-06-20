@@ -13,6 +13,6 @@ EXPOSE 8080/tcp
 WORKDIR /home/app
 
 # build target from Maven:
-COPY --from=builder /home/app/target/CrypticRadio-1.0.jar app.jar
+COPY --from=builder /home/app/target/CrypticRadio-1.1.jar app.jar
 
 CMD ["java", "-jar", "./app.jar"]
