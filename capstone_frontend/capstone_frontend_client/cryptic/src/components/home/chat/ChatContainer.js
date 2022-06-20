@@ -47,7 +47,8 @@ const ChatContainer = ({ currentRoom, getUserDetails }) => {
     socket.on('chat message', (msg) => {
 
       // make sure we don't keep displaying the same user joining
-
+      console.log(msg); 
+      msg.timeStamp = Date.now();
       let newMessages = [...messages];
       newMessages.push(msg);
       setMessages(newMessages);
@@ -66,20 +67,20 @@ const ChatContainer = ({ currentRoom, getUserDetails }) => {
     // check if the message is empty, if it is just return
     if (message.trim() === '' || !message) return;
 
-
+    console.log(message);
     let newMessages = [...messages];
 
 
     // emit broadcast
-    socket.emit('chat message', { username: user.username, messageContent: message});
+    socket.emit('chat message', { username: user.username, messageContent: message, timeStamp : Date.now() });
 
     const messageToPost = {
       messageContent: message,
       roomId: currentRoom.roomId,
       userId: user.userId,
       username: user.username,
+      timeStamp: Date.now()
     }
-
     newMessages.push(messageToPost);
     setMessages(newMessages);
     setMessage('');

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PokemonThumbnail from "./PokemonThumbnail";
 import Header from '../home/Header'
+import './pokeindex.css';
 
 
 function Game() {
@@ -30,7 +31,7 @@ useEffect(() => {
 }, []);
 
 return (
-	<div className="app-container">
+	<div className="poke-app-container">
          <Header />
 	<h1>Pokemon Kingdom .</h1>
 

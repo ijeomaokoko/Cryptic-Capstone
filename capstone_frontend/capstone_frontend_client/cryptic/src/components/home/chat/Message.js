@@ -72,7 +72,7 @@ const Message = ({ message }) => {
           {
             deleted ?
             `Message Deleted.` :
-            `${message.username}: ${message.messageContent}: ${ Intl.DateTimeFormat('en-US', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' }).format(new Date(message.timeStamp))}`
+            `${message.username}: ${message.messageContent}: ${ new Intl.DateTimeFormat('en-US', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' }).format(new Date(message.timeStamp))}`
           }
         </h1> :
         <h1 className='single-message'>{message.messageContent}</h1>
