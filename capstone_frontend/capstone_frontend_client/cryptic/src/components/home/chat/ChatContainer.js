@@ -6,14 +6,21 @@ import MessageContainer from './MessageContainer';
 import jwtDecode from 'jwt-decode';
 import { io } from 'socket.io-client';
 import './button.scss';
+import Picker from 'emoji-picker-react';
+
 
 const ChatContainer = ({ currentRoom, getUserDetails }) => {
 
   const [user, setUser] = useContext(UserContext);
   const [socket, setSocket] = useContext(SocketContext);
   const [message, setMessage] = useState('');
-
   const [messages, setMessages] = useState([]);
+  const [showPicker, setShowPicker] = useState(false);
+ 
+  const onEmojiClick = (event, emojiObject) => {
+    setMessage(prevInput => prevInput + emojiObject.emoji);
+    setShowPicker(false);
+  };
 
   useEffect(() => {
 
@@ -113,7 +120,15 @@ const ChatContainer = ({ currentRoom, getUserDetails }) => {
       <div className='chat-container'>
         <MessageContainer messages={messages} scrollContainer={scrollContainer} />
         <form className='message-form' autoComplete='off' onSubmit={submitMessage}>
-          <TextField label='Say Hello!' variant='outlined' className='message-input' name='message' value={message} aria-autocomplete='false' onChange={handleMessageChange} />
+          <TextField label='Say Hello!' variant='outlined' className='message-input' name='message' value={message} aria-autocomplete='false'
+          onChange={handleMessageChange} />
+        <img
+          className="emoji-icon"
+          src="https://icons.getbootstrap.com/assets/icons/emoji-smile.svg"
+          onClick={() => setShowPicker(val => !val)} />
+        {showPicker && <Picker
+          pickerStyle={{ width: '30%' }}
+          onEmojiClick={onEmojiClick} />}
           <Button variant='contained' className='chat-input-area__submit-button' type='submit'></Button>
         </form>
       </div>
