@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.core.userdetails.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -37,29 +38,35 @@ class UserJdbcRepositoryTest {
 
     @Test
     void add() {
-        AppUser user = makeJohn();
-//        User actual = repository.add(user);
-//        assertNotNull(actual);
-       // assertEquals(, actual.getUsername());
-
-        user= makeJohn();
-        User actual = repository.add(user);
+        AppUser goodUser= makeGoodUser();
+        User actual = repository.add(goodUser);
         assertNotNull(actual);
-        assertEquals("john@smith.com", actual.getUsername());
+        assertEquals("Test", actual.getUsername());
+        assertEquals("Pass",actual.getPassword());
     }
 
     @Test
     void update() {
-        User user = makeJohn();
-        user.getUsername();
-        assertFalse(repository.update(makeJohn()));
-        user.getUsername();
-        assertFalse(repository.update(makeJohn()));
 
+
+        AppUser badUser = makeBadUser();
+        assertFalse(repository.update(badUser));
+
+        assertTrue(repository.update(makeGoodUser()));
+
+        AppUser actual = repository.findByUserId(2);
+        assertEquals("Test", actual.getUsername());
+        assertEquals("Pass",actual.getPassword());
     }
 
-    private AppUser makeJohn(){
-        AppUser au = new AppUser(1,"","",false,null);
+    private AppUser makeBadUser(){
+        AppUser au = new AppUser(-1,"john@smith.com"," ",false, List.of("USER"));
         return au;
     }
+    private AppUser makeGoodUser(){
+
+        AppUser au = new AppUser(2,"Test","Pass",false,List.of("USER"));
+        return au;
+    }
+
 }

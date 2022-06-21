@@ -7,11 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
+@SpringBootTest
 
 public class MessageServiceTest {
     @MockBean
@@ -22,12 +25,13 @@ public class MessageServiceTest {
 
     @Test
     void shouldAddWhenValid() {
-        Message expected = new Message();
-        Message arg = new Message();
-        arg.setMessageId(0);
+        Message expected = makeGoodMessage();
+        expected.setMessageId(0);
+        when(repository.add(expected)).thenReturn(expected);
+        Result<Message> result = service.add(expected);
 
-        when(repository.add(arg)).thenReturn(expected);
-        Result<Message> result = service.add(arg);
+        System.out.println(result.getMessages());
+
         assertEquals(ResultType.SUCCESS, result.getType());
 
         assertEquals(expected, result.getPayload());
@@ -37,21 +41,16 @@ public class MessageServiceTest {
 
     @Test
         void shouldNotAddWhenInvalid() {
-            Message message = makeMessage();
-            Result<Message> result = service.add(message);
-            assertEquals(ResultType.INVALID, result.getType());
+            Message expected = makeBadMessage();
+            when(repository.add(expected)).thenReturn(expected);
+            Result<Message> result = service.add(expected);
 
-            message.setMessageId(0);
-            message.setMessageContent(null);
-            result = service.add(message);
             assertEquals(ResultType.INVALID, result.getType());
         }
 
         @Test
         void shouldUpdate () {
-            Message message = new Message();
-            message.setMessageId(1);
-            message.setMessageContent("messageId must be set for `update` operation");
+            Message message = makeGoodMessage();
 
             when(repository.update(message)).thenReturn(true);
 
@@ -61,19 +60,33 @@ public class MessageServiceTest {
         }
 
         @Test
-        void shouldNotUpdate(){
-        Message message = new Message();
-        message.setMessageId(1);
-        when(repository.update(message)).thenReturn(true);
+        void shouldNotUpdateInvalid(){
+            Message message = makeBadMessage();
+            when(repository.update(message)).thenReturn(true);
 
-        Result<Message> actual = service.update(message);
-        assertEquals(ResultType.INVALID, actual.getType());
+            Result<Message> actual = service.update(message);
+            assertEquals(ResultType.INVALID, actual.getType());
         }
 
-        private Message makeMessage() {
+        private Message makeGoodMessage() {
             Message message = new Message();
+            message.setRoomId(1);
+            message.setUsername("john@smith.com");
+            message.setUserId(1);
             message.setMessageId(1);
-            message.setMessageContent("messageId: %s, not found.");
+            message.setMessageContent("test");
+            message.setTimeStamp(Timestamp.valueOf(LocalDateTime.now()));
+            return message;
+        }
+
+        private Message makeBadMessage() {
+            Message message = new Message();
+            message.setRoomId(-1);
+            message.setUsername("john@smith.com");
+            message.setUserId(-1);
+            message.setMessageId(-1);
+            message.setMessageContent("badtest");
+            message.setTimeStamp(Timestamp.valueOf(LocalDateTime.now()));
             return message;
         }
     }
