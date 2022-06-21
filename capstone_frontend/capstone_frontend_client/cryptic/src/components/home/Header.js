@@ -4,6 +4,12 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuIcon from '@mui/icons-material/Menu';
 import { AppBar, Toolbar, Typography, IconButton, Menu, MenuItem } from '@mui/material'
 import Tooltip from '@mui/material/Tooltip';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import HomeIcon from '@mui/icons-material/Home';
+import LogoutIcon from '@mui/icons-material/Logout';
+import InfoIcon from '@mui/icons-material/Info';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 
 const Header = () => {
 
@@ -114,7 +120,7 @@ const Header = () => {
               onClick={handleMenu}
               color="inherit"
             >
-              <AccountCircle />
+              <AccountBoxIcon color="secondary" fontSize="large" />
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -131,11 +137,11 @@ const Header = () => {
               open={Boolean(anchorEl)}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleLogOut}>Logout</MenuItem>
-              <MenuItem onClick={handleAbout}>About</MenuItem>
-              <MenuItem onClick={handleHome}>Home</MenuItem>
-              <MenuItem onClick={handleCalendar}>Calendar</MenuItem>
-              <MenuItem onClick={handleGame}>Game</MenuItem>
+              <MenuItem onClick={handleLogOut}><LogoutIcon fontSize="medium" /></MenuItem>
+              <MenuItem onClick={handleAbout}><InfoIcon fontSize="medium" /></MenuItem>
+              <MenuItem onClick={handleHome}><HomeIcon fontSize="medium" /></MenuItem>
+              <MenuItem onClick={handleCalendar}><CalendarMonthIcon fontSize="medium" /></MenuItem>
+              <MenuItem onClick={handleGame}><SportsEsportsIcon fontSize="medium" /></MenuItem>
             </Menu>
           </div>
       </Toolbar>
