@@ -1,0 +1,25 @@
+$submit-icon-size: 30px;
+
+.chat-input-area__submit-button {
+  position: absolute;
+  top: 0;
+  right: 16px;
+  bottom: 0;
+  width: $submit-icon-size;
+  height: $submit-icon-size;
+  background-color: transparent;
+  background-image: url("./paper-plane.svg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: 5px;
+  margin: auto;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}

@@ -1,10 +1,11 @@
-import { TextField, Button } from '@mui/material'
+import { TextField, Button} from '@mui/material'
 import React, { useState, useContext, useEffect } from 'react';
 import UserContext from '../../../context/UserContext';
 import SocketContext from '../../../context/SocketContext';
 import MessageContainer from './MessageContainer';
 import jwtDecode from 'jwt-decode';
 import { io } from 'socket.io-client';
+import './button.scss';
 
 const ChatContainer = ({ currentRoom, getUserDetails }) => {
 
@@ -113,7 +114,7 @@ const ChatContainer = ({ currentRoom, getUserDetails }) => {
         <MessageContainer messages={messages} scrollContainer={scrollContainer} />
         <form className='message-form' autoComplete='off' onSubmit={submitMessage}>
           <TextField label='Say Hello!' variant='outlined' className='message-input' name='message' value={message} aria-autocomplete='false' onChange={handleMessageChange} />
-          <Button variant='contained' className='submit-message-button' type='submit'>Send</Button>
+          <Button variant='contained' className='chat-input-area__submit-button' type='submit'></Button>
         </form>
       </div>
     )
