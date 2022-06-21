@@ -31,3 +31,11 @@ $submit-icon-size: 30px;
   right: 250px;
   height: 2%;
 }
+
+$site-padding: 16px;
+
+.chat-log {
+  box-sizing: border-box;
+  padding: $site-padding;
+  overflow-y: scroll;
+}

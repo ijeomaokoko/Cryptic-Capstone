@@ -1,6 +1,7 @@
 import jwtDecode from 'jwt-decode';
 import React, { useEffect, useRef } from 'react'
 import Message from './Message';
+import './button.scss';
 
 const MessageContainer = ({ messages, scrollContainer, setMessages }) => {
 
@@ -18,5 +19,7 @@ const MessageContainer = ({ messages, scrollContainer, setMessages }) => {
     </div>
   )
 }
+
+
 
 export default MessageContainer

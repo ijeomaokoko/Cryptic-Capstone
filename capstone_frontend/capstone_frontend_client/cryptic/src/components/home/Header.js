@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom';
-import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuIcon from '@mui/icons-material/Menu';
 import { AppBar, Toolbar, Typography, IconButton, Menu, MenuItem } from '@mui/material'
-import Tooltip from '@mui/material/Tooltip';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import HomeIcon from '@mui/icons-material/Home';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -120,7 +118,7 @@ const Header = () => {
               onClick={handleMenu}
               color="inherit"
             >
-              <AccountBoxIcon color="secondary" fontSize="large" />
+              <AccountBoxIcon  fontSize="large" />
             </IconButton>
             <Menu
               id="menu-appbar"

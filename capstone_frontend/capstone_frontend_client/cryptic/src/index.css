@@ -81,7 +81,7 @@ code {
 
 .single-message-container {
   width: 100%;
-  border-bottom: 4px solid #1976d2;
+  padding-bottom: 2px;
   position: relative;
 }
 
@@ -91,7 +91,7 @@ code {
 }
 
 .single-message {
-  margin-left: 1em;
+  margin-left: 0.5em;
   font-size: 1.25em;
 }
 
