@@ -9,6 +9,8 @@ import Login from './components/login/Login';
 import About from './components/about/About';
 import Calendar from './components/calendar/CalendarMonth';
 import Game from './components/game/Game';
+import HomeTwo from './components/hometwo/HomeTwo';
+import HomeThree from './components/homethree/HomeThree';
 
 function App() {
 
@@ -26,6 +28,8 @@ function App() {
             <Routes>
               <Route path="*" element={<NotFound />} />
               <Route path = '/home' element={<Home />} />
+              <Route path = '/hometwo' element={<HomeTwo />} />
+              <Route path = '/homethree' element={<HomeThree />} />
               <Route path = '/auth' element={<Login />} />
               <Route path = '/about' element={<About />}/>
               <Route path = '/calendar' element={<Calendar />}/>

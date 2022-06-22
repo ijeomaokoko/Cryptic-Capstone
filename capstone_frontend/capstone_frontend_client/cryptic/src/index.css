@@ -90,6 +90,15 @@ code {
   color: white;
 }
 
+.server-messagetwo {
+  background-color: #004183;
+  color: white;
+}
+
+.server-messagethree {
+  background-color: #004183;
+  color: white;
+}
 .single-message {
   margin-left: 0.5em;
   font-size: 1.25em;
@@ -176,7 +185,7 @@ code {
 }
 
 .login-wrapper {
-  color: #1976d2;
+  color: #3a424b;
   background-color: white;
   width: 50%;
   text-align: center;

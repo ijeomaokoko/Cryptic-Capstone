@@ -1,0 +1,7 @@
+$site-padding: 16px;
+
+.chat-log {
+  box-sizing: border-box;
+  padding: $site-padding;
+  overflow-y: scroll;
+}
