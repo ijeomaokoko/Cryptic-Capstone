@@ -19,7 +19,7 @@ const Room = ({ room, setCurrentRoom }) => {
 
   return (
     <div className={isActive ? 'single-room-container active-room' : 'single-room-container'} name={room.name} onClick={handleRoomChange}>
-      <h1 className='single-room-name'>{room.name}</h1>
+      <h1 className='single-room-name'>{}</h1>
     </div>
   )
 }

@@ -58,7 +58,9 @@ const ChatContainer = ({ currentRoom, getUserDetails }) => {
       console.log(msg); 
       msg.timeStamp = Date.now();
       let newMessages = [...messages];
-      newMessages.push(msg);
+      if(msg.roomId == currentRoom.roomId) {
+        newMessages.push(msg);
+      }
       setMessages(newMessages);
 
     });
@@ -80,7 +82,7 @@ const ChatContainer = ({ currentRoom, getUserDetails }) => {
 
 
     // emit broadcast
-    socket.emit('chat message', { username: user.username, messageContent: message, timeStamp : Date.now() });
+    socket.emit('chat message', { username: user.username, messageContent: message, timeStamp : Date.now(), roomId: currentRoom.roomId});
 
     const messageToPost = {
       messageContent: message,
@@ -120,7 +122,7 @@ const ChatContainer = ({ currentRoom, getUserDetails }) => {
       <div className='chat-container'>
         <MessageContainer messages={messages} scrollContainer={scrollContainer} />
         <form className='message-form' autoComplete='off' onSubmit={submitMessage}>
-          <TextField label='Say Hello!' variant='outlined' className='message-input' name='message' value={message} aria-autocomplete='false'
+          <TextField label='Chatting in Main!' variant='outlined' className='message-input' name='message' value={message} aria-autocomplete='false'
           onChange={handleMessageChange} />
         <img
           className="emoji-icon"

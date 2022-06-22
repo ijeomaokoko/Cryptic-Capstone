@@ -35,22 +35,7 @@ code {
 
 /* Room Container */
 
-.room-container {
-  width: 25%;
-  border-right: 5px solid #1976d2;
-  background-color: #004183;
-}
-
 /* Room */
-
-.single-room-container {
-  width: 100%;
-  border-bottom: 4px solid #1976d2;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  padding: 0.5em 0em;
-}
 
 .single-room-container:hover {
   background-color: #135ba3;
@@ -86,17 +71,17 @@ code {
 }
 
 .server-message {
-  background-color: #004183;
+  background-color: #0d0d0e;
   color: white;
 }
 
 .server-messagetwo {
-  background-color: #004183;
+  background-color: #3a7fc4;
   color: white;
 }
 
 .server-messagethree {
-  background-color: #004183;
+  background-color: #139966;
   color: white;
 }
 .single-message {

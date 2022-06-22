@@ -60,7 +60,7 @@ const Message = ({ message }) => {
   }
 
   return (
-    <div className={user.username === message.username ? 'single-message-container user-message' : 'single-message-container server-message'}>
+    <div className={user.username === message.username ? 'single-message-container user-message' : 'single-message-container server-messagethree'}>
       {
         jwtDecode(localStorage.getItem('token')).authorities == 'ROLE_ADMIN' && message.username && !deleted ?
         <div className='delete-message-button' onClick={handleDelete}>&times;</div> :
