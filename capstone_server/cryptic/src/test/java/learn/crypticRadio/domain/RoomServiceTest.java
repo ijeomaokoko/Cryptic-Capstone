@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
+@SpringBootTest
 
 public class RoomServiceTest {
     @MockBean
@@ -28,12 +28,13 @@ public class RoomServiceTest {
 
     @Test
     void shouldAddWhenValid(){
-        Room expected = new Room();
-        Room arg = new Room();
+        Room expected = makeRoom();
+        Room arg = makeRoom();
         arg.setRoomId(0);
 
         when(repository.add(arg)).thenReturn(expected);
         Result<Room> result = service.add(arg);
+
         assertEquals(ResultType.SUCCESS, result.getType());
 
         assertEquals(expected, result.getPayload());
@@ -41,8 +42,9 @@ public class RoomServiceTest {
 
     @Test
     void shouldNotAddWhenInvalid() {
-        Room room = makeRoom();
+        Room room = makeBadRoom();
         Result<Room> result = service.add(room);
+        when(repository.add(room)).thenReturn(null);
         assertEquals(ResultType.INVALID, result.getType());
 
         room.setRoomId(0);
@@ -54,9 +56,7 @@ public class RoomServiceTest {
 
     @Test
     void shouldUpdate () {
-        Room room = new Room();
-        room.setRoomId(1);
-        room.setRoomName("");
+        Room room = makeRoom();
 
         when(repository.update(room)).thenReturn(true);
 
@@ -66,8 +66,7 @@ public class RoomServiceTest {
 
     @Test
     void shouldNotUpdate () {
-        Room room = new Room();
-        room.setRoomId(1);
+        Room room = makeBadRoom();
         when(repository.update(room)).thenReturn(true);
 
         Result<Room> actual = service.update(room);
@@ -77,8 +76,15 @@ public class RoomServiceTest {
 
     private Room makeRoom() {
         Room room = new Room();
-        room.setRoomId(1);
-        room.setRoomName("room name not found.");
+        room.setRoomId(5);
+        room.setRoomName("test5");
+        return room;
+    }
+
+    private Room makeBadRoom(){
+        Room room = new Room();
+        room.setRoomId(-1);
+        room.setRoomName("");
         return room;
     }
 
