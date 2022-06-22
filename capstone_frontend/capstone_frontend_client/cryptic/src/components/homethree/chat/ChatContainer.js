@@ -45,7 +45,7 @@ const ChatContainer = ({ currentRoom, getUserDetails }) => {
         setMessages([]);
       }
     }).then(() => {
-      s.emit('chat message', { messageContent: `User ${jwtDecode(localStorage.getItem("token")).sub} has joined.`, roomId : 1 });
+      s.emit('chat message', { messageContent: `User ${jwtDecode(localStorage.getItem("token")).sub} has joined.`, roomId : 3 });
     })
   }, []);
 

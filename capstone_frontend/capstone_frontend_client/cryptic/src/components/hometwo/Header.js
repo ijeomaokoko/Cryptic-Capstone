@@ -187,9 +187,9 @@ const Header = () => {
             >
               <MenuItem onClick={handleLogOut}><LogoutIcon fontSize="medium" /></MenuItem>
               <MenuItem onClick={handleAbout}><InfoIcon fontSize="medium" /></MenuItem>
-              <MenuItem onClick={handleHome}><HomeIcon fontSize="medium" /></MenuItem>
-              <MenuItem onClick={handleHomeTwo}><HomeIcon fontSize="medium" color="inherit" label="Room Two"/></MenuItem>
-              <MenuItem onClick={handleHomeThree}><HomeIcon fontSize="medium" color="inherit" label="Room Three"/></MenuItem>
+              <MenuItem onClick={handleHome}>"1" <HomeIcon fontSize="medium" /></MenuItem>
+              <MenuItem onClick={handleHomeTwo}>"2" <HomeIcon fontSize="medium" color="primary" label="Room Two"/></MenuItem>
+              <MenuItem onClick={handleHomeThree}>"3"<HomeIcon fontSize="medium" color="success" label="Room Three"/></MenuItem>
               <MenuItem onClick={handleCalendar}><CalendarMonthIcon fontSize="medium" /></MenuItem>
               <MenuItem onClick={handleGame}><SportsEsportsIcon fontSize="medium" /></MenuItem>
             </Menu>
@@ -200,4 +200,3 @@ const Header = () => {
 }
 
 export default Header
-

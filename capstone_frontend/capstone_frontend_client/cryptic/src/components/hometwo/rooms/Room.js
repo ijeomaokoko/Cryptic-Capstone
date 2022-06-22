@@ -6,7 +6,7 @@ const Room = ({ room, setCurrentRoom }) => {
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
-    if(room.name === 'Main') {
+    if(room.name === 'test room 2') {
       setIsActive(true);
     }
   }, []);
