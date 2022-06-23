@@ -181,7 +181,7 @@ code {
   height: 50vh;
 }
 .login-container {
-  background-image: url("/Users/jonathonevans/Desktop/CapstoneBravo/Cryptic-Capstone/capstone_frontend/capstone_frontend_client/cryptic/src/components/images/loginbackground.png");
+  background-image: url("./components/images/loginbackground.png");
   display: flex;
   height: 100vh;
   align-items: center;
