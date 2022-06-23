@@ -85,7 +85,7 @@ const Header = () => {
       
       <div className="single-room-name">
       <h1>
-        Main Room
+        Game
         </h1>
         </div>
         {
@@ -210,4 +210,3 @@ const Header = () => {
 }
 
 export default Header
-
