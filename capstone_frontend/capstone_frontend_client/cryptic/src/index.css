@@ -45,9 +45,22 @@ code {
   background-color: #135ba3;
 }
 
-.single-room-name {
-  margin: 0em 0em 0em 1em;
-  font-size: 1.75em;
+.single-room-name h1 {
+  width: 0ch;
+  color: black;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: text 4s steps(15) infinite alternate;
+}
+
+@keyframes text {
+  0% {
+    width: 0ch;
+  }
+  50% {
+    width: 15ch;
+    color: black;
+  }
 }
 
 /* Chat Container */
@@ -65,13 +78,15 @@ code {
 }
 
 .single-message-container {
-  width: 100%;
-  padding-bottom: 2px;
+  margin-left: 2em !important;
+  width: 95%;
+  padding-bottom: 4px;
+  border: 1px solid blue;
   position: relative;
 }
 
 .server-message {
-  background-color: #0d0d0e;
+  background-color: #434347c0;
   color: white;
 }
 
@@ -85,8 +100,9 @@ code {
   color: white;
 }
 .single-message {
+  font-size: 1.5em;
+  text-align: center;
   margin-left: 0.5em;
-  font-size: 1.25em;
 }
 
 .message-form {
@@ -98,7 +114,7 @@ code {
 }
 
 .message-input {
-  width: 85%;
+  width: 83%;
   margin-left: 1em !important;
 }
 
@@ -160,13 +176,17 @@ code {
 }
 
 /* Login */
-
+.login-background {
+  display: flex;
+  height: 50vh;
+}
 .login-container {
+  background-image: url("/Users/jonathonevans/Desktop/CapstoneBravo/Cryptic-Capstone/capstone_frontend/capstone_frontend_client/cryptic/src/components/images/loginbackground.png");
   display: flex;
   height: 100vh;
   align-items: center;
   justify-content: center;
-  background-color: #1976d2;
+  background-color: #2f3e4e;
 }
 
 .login-wrapper {
@@ -175,7 +195,7 @@ code {
   width: 50%;
   text-align: center;
   padding: 1em;
-  box-shadow: 0px 2px 2px rgb(104, 104, 104);
+  box-shadow: 0px 2px 2px rgb(180, 101, 48);
   border-radius: 5px;
 }
 

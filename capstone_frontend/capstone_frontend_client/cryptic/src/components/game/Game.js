@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import PokemonThumbnail from "./PokemonThumbnail";
 import Header from '../home/Header'
 import './pokeindex.css';
+import './Header.js';
 
 
 function Game() {

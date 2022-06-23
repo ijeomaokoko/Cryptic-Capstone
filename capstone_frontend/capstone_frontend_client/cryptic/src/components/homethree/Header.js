@@ -8,6 +8,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import InfoIcon from '@mui/icons-material/Info';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
+import {TextField} from '@mui/material';
 
 const Header = () => {
 
@@ -79,6 +80,14 @@ const Header = () => {
   return (
     <AppBar position="static">
       <Toolbar>
+        <div>
+      <img src="images/cryptic_mini.png" alt="logo" />
+      </div>
+      <div className="single-room-name">
+      <h1>
+        Room 3
+        </h1>
+        </div>
         {
           path === '/home' ?
             <>

@@ -122,7 +122,7 @@ const ChatContainer = ({ currentRoom, getUserDetails }) => {
       <div className='chat-container'>
         <MessageContainer messages={messages} scrollContainer={scrollContainer} />
         <form className='message-form' autoComplete='off' onSubmit={submitMessage}>
-          <TextField label='Chatting in Main!' variant='outlined' className='message-input' name='message' value={message} aria-autocomplete='false'
+          <TextField label='Chatting in Room 3!' variant='outlined' className='message-input' name='message' value={message} aria-autocomplete='false'
           onChange={handleMessageChange} />
         <img
           className="emoji-icon"
